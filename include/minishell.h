@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reldnah <reldnah@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:00:54 by handler           #+#    #+#             */
-/*   Updated: 2023/05/12 11:25:15 by reldnah          ###   ########.fr       */
+/*   Updated: 2025/04/09 08:14:07 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,6 @@ void	child_process(t_data *data, t_cmd *cmd, int *pip);
 
 //signals2.c
 void	signals2(void);
-
 
 // ********        DEBUG        ********** //
 void	print_token(t_token *token);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: handler <handler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 22:51:03 by handler           #+#    #+#             */
-/*   Updated: 2023/05/11 22:51:36 by handler          ###   ########.fr       */
+/*   Updated: 2025/04/09 08:16:37 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_token(t_token *token)
 		printf("Type : %d, [%s]\n", tmp->type, tmp->str);
 		tmp = tmp->next;
 	}
-	printf("Type : %d, [%s]\n",  tmp->type, tmp->str);
+	printf("Type : %d, [%s]\n", tmp->type, tmp->str);
 }
 
 void	print_tab(char **tab)
@@ -54,13 +54,13 @@ void	print_cmd(t_cmd *cmd)
 	while (tmp->next != cmd)
 	{
 		printf("Skip -> %d, infile -> %d, outfile -> %d, cmd : ",
-		tmp->skip_cmd, tmp->infile, tmp->outfile);
+			tmp->skip_cmd, tmp->infile, tmp->outfile);
 		print_tab(tmp->cmd_param);
 		printf("\n");
 		tmp = tmp->next;
 	}
 	printf("Skip -> %d, infile -> %d, outfile -> %d, cmd : ", tmp->skip_cmd,
-		 tmp->infile, tmp->outfile);
+		tmp->infile, tmp->outfile);
 	print_tab(tmp->cmd_param);
 	printf("\n");
 }
