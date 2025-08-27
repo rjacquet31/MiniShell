@@ -6,7 +6,7 @@
 /*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 22:55:53 by rafael            #+#    #+#             */
-/*   Updated: 2025/06/13 22:55:55 by rafael           ###   ########.fr       */
+/*   Updated: 2025/08/27 13:41:05 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ static int	almost_atoi(char *str, int *err)
 	unsigned long long	ret;
 	int					i;
 	int					j;
-	int					pn;
+	int					k;
 
 	i = 0;
 	while ((9 <= str[i] && str[i] <= 13) || str[i] == 32)
 		i++;
-	pn = 1;
+	k = 1;
 	if (str[i] == '+' || str[i] == '-')
 		if (str[i++] == '-')
-			pn = -1;
+			k = -1;
 	j = i;
 	ret = 0;
 	while ('0' <= str[i] && str[i] <= '9')
 		ret = ret * 10 + (str[i++] - 48);
 	while ((9 <= str[i] && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (str[i] || i - j > 20 || ((pn == -1 && (ret - 1) > LONG_MAX) || \
-		(pn == 1 && (ret > LONG_MAX))))
+	if (str[i] || i - j > 20 || ((k == -1 && (ret - 1) > LONG_MAX) || \
+		(k == 1 && (ret > LONG_MAX))))
 		*err = 1;
-	return ((int)((ret * pn) % 256));
+	return ((int)((ret * k) % 256));
 }
 
 void	ft_exit(t_data *shell_data, char **args)

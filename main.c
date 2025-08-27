@@ -18,7 +18,7 @@ static int	init_env(t_data *shell_data, char **env)
 {
 	t_env	*list;
 	int		i;
-	char	*tmp;
+	char	*temp;
 
 	if (!(*env))
 		return (make_env2(shell_data));
@@ -26,10 +26,10 @@ static int	init_env(t_data *shell_data, char **env)
 	list = NULL;
 	while (env[++i])
 	{
-		tmp = ft_strdup(env[i]);
-		if (!tmp)
+		temp = ft_strdup(env[i]);
+		if (!temp)
 			return (free_list(&list));
-		if (!append(&list, tmp))
+		if (!append(&list, temp))
 			return (free_list(&list));
 	}
 	shell_data->env = list;

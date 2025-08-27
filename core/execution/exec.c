@@ -6,7 +6,7 @@
 /*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 22:56:17 by rafael            #+#    #+#             */
-/*   Updated: 2025/06/13 22:56:19 by rafael           ###   ########.fr       */
+/*   Updated: 2025/08/27 13:31:07 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,43 +62,43 @@ static void	wait_all(t_data *data)
 	int		status;
 	int		pid;
 	int		len;
-	t_cmd	*tmp;
+	t_cmd	*temp;
 
-	tmp = data->command_node;
-	len = len_cmd(tmp);
+	temp = data->command_node;
+	len = len_cmd(temp);
 	while (len--)
 	{
 		pid = waitpid(0, &status, 0);
 		if (pid == g_signal_pid && WIFEXITED(status))
 			data->exit_code = WEXITSTATUS(status);
-		if (tmp->outfile >= 0)
-			close(tmp->outfile);
-		if (tmp->infile >= 0)
-			close(tmp->infile);
-		tmp = tmp->next;
+		if (temp->outfile >= 0)
+			close(temp->outfile);
+		if (temp->infile >= 0)
+			close(temp->infile);
+		temp = temp->next;
 	}
 }
 
 bool	exec(t_data *data)
 {
-	t_cmd	*tmp;
+	t_cmd	*temp;
 	int		*pip;
 
 	pip = data->pip;
-	tmp = data->command_node;
-	if (tmp && !tmp->skip_cmd && tmp->next == tmp
-		&& tmp->cmd_param[0] && is_builtin(tmp->cmd_param[0]))
-		return (launch_builtin(data, tmp));
+	temp = data->command_node;
+	if (temp && !temp->skip_cmd && temp->next == temp
+		&& temp->cmd_param[0] && is_builtin(temp->cmd_param[0]))
+		return (launch_builtin(data, temp));
 	if (pipe(pip) == -1)
 		return (false);
-	run_exec(data, tmp, pip);
-	tmp = tmp->next;
-	while (tmp != data->command_node)
+	run_exec(data, temp, pip);
+	temp = temp->next;
+	while (temp != data->command_node)
 	{
 		if (pipe(pip) == -1)
 			return (false);
-		run_exec(data, tmp, pip);
-		tmp = tmp->next;
+		run_exec(data, temp, pip);
+		temp = temp->next;
 	}
 	wait_all(data);
 	return (true);

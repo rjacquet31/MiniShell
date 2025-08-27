@@ -6,7 +6,7 @@
 /*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 22:58:43 by rafael            #+#    #+#             */
-/*   Updated: 2025/06/18 14:09:26 by rafael           ###   ########.fr       */
+/*   Updated: 2025/08/27 13:44:17 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	sort_array(char **arr, int len)
 {
 	int	i;
 	int	j;
-	int	diff;
+	int	k;
 
 	i = 0;
 	while (i < len)
@@ -58,8 +58,8 @@ void	sort_array(char **arr, int len)
 		j = i + 1;
 		while (j < len)
 		{
-			diff = ft_strncmp(arr[i], arr[j], __INT_MAX__);
-			if (diff > 0)
+			k = ft_strncmp(arr[i], arr[j], __INT_MAX__);
+			if (k > 0)
 			{
 				ft_swap_str_tab(i, j, arr);
 				continue ;

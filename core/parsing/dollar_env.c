@@ -6,7 +6,7 @@
 /*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 21:13:47 by rafael            #+#    #+#             */
-/*   Updated: 2025/06/23 21:13:49 by rafael           ###   ########.fr       */
+/*   Updated: 2025/08/27 13:43:15 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,16 @@ char	*get_elem_env(t_env *env, char *key)
 {
 	t_env	*tmp;
 	int		len;
-	int		t;
+	int		j;
 
 	if (!key)
 		return (NULL);
 	tmp = env;
 	len = len_list(tmp);
-	t = ft_strlen(key);
+	j = ft_strlen(key);
 	while (len--)
 	{
-		if (ft_strncmp(tmp->str, key, t) == 0)
+		if (ft_strncmp(tmp->str, key, j) == 0)
 		{
 			len = 0;
 			while (tmp->str[len])

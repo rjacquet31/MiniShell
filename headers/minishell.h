@@ -6,7 +6,7 @@
 /*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 22:56:57 by rafael            #+#    #+#             */
-/*   Updated: 2025/06/18 14:07:55 by rafael           ###   ########.fr       */
+/*   Updated: 2025/08/27 08:02:51 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,13 +168,13 @@ char	**get_param(t_data *shell_data, t_tok *token_node);
 bool	exec(t_data *shell_data);
 bool	is_builtin(char *command_node);
 
-//launch_builtin.c
+//exec_builtin.c
 bool	launch_builtin(t_data *shell_data, t_cmd *command_node);
 
 //find_cmd.c
 char	*find_cmd(t_data *shell_data, char *sample, t_env *env);
 
-//exec2.c
+//exec_child.c
 void	child_process(t_data *shell_data, t_cmd *command_node, int *pip);
 
 //signals2.c

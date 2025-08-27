@@ -6,7 +6,7 @@
 /*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 22:55:18 by rafael            #+#    #+#             */
-/*   Updated: 2025/06/18 13:36:51 by rafael           ###   ########.fr       */
+/*   Updated: 2025/08/27 13:39:28 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	update_pwd(t_data *data, char *param)
 
 int	ft_cd(t_data *data, char **params)
 {
-	int		res;
+	int		i;
 	char	*path;
 
 	if (count_arg(params) == 1)
@@ -68,10 +68,10 @@ int	ft_cd(t_data *data, char **params)
 		path = params[1];
 	else
 		return (ft_putstr_fd("minishell: cd: too many arguments\n", 2), 1);
-	res = chdir(path);
-	if (res == -1)
+	i = chdir(path);
+	if (i == -1)
 		perror(path);
 	else
 		update_pwd(data, path);
-	return (res != 0);
+	return (i != 0);
 }

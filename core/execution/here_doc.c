@@ -6,7 +6,7 @@
 /*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 22:56:30 by rafael            #+#    #+#             */
-/*   Updated: 2025/06/13 22:56:32 by rafael           ###   ########.fr       */
+/*   Updated: 2025/08/27 13:38:29 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 static bool	read_in_stdin(t_data *shell_data, int fd, char *word)
 {
-	char	*buf;
+	char	*buff;
 
 	while (1)
 	{
-		buf = NULL;
-		buf = readline("> ");
-		if (!buf)
+		buff = NULL;
+		buff = readline("> ");
+		if (!buff)
 		{
-			print_error("warning: here-document delimited by end-of-file ");
+			print_error("warning: here doc delimited by eof ");
 			print_error("(wanted '");
 			print_error(word);
 			print_error("')\n");
 			break ;
 		}
-		if (!ft_strncmp(word, buf, INT_MAX))
+		if (!ft_strncmp(word, buff, INT_MAX))
 			break ;
-		if (!replace_dollar(&buf, shell_data))
+		if (!replace_dollar(&buff, shell_data))
 			free_all(shell_data, ERR_MALLOC, EXT_MALLOC);
-		write(fd, buf, ft_strlen(buf));
+		write(fd, buff, ft_strlen(buff));
 		write(fd, "\n", 1);
-		free(buf);
+		free(buff);
 	}
-	free(buf);
+	free(buff);
 	close(fd);
 	return (true);
 }
